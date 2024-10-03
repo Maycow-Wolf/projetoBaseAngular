@@ -12,13 +12,17 @@ import { UserListComponent } from '../user-list/user-list.component';
     UserListComponent
   ],
   imports: [
-    FormsModule, 
-    ReactiveFormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     NgIf,
     NgFor,
-    CommonModule
+    CommonModule,
   ],
-  exports: []
+  exports: [
+    UserComponent,
+    UserFormComponent,
+    UserListComponent
+  ]
 })
 
 export class MainModule { }

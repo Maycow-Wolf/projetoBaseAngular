@@ -7,8 +7,6 @@ import { MainModule } from './main-module/main.module';
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [MainModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -19,10 +17,10 @@ export class UserComponent {
     idade?: number,
     email?: string,
     cargo?: string }[] = [];
-  
+
   meuFormulario = new FormGroup({
 
-    nome: new FormControl("",[Validators.minLength(3), Validators.maxLength(10), Validators.required]),
+    nome: new FormControl("",[Validators.minLength(3), Validators.maxLength(15), Validators.required]),
     idade: new FormControl(0,[Validators.min(18), Validators.max(80), Validators.required]),
     email: new FormControl("",[Validators.email, Validators.required]),
     cargo: new FormControl("",[Validators.required]),
@@ -41,9 +39,8 @@ export class UserComponent {
         };
 
         this.cadastroEditadoIndex = null;
-
       } else {
-        this.cadastros.push({ 
+        this.cadastros.push({
           nome: this.meuFormulario.controls.nome.value!,
           idade: this.meuFormulario.controls.idade.value!,
           email: this.meuFormulario.controls.email.value!,
