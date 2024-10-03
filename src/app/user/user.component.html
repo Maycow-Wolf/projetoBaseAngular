@@ -1,0 +1,103 @@
+<form [formGroup]="meuFormulario" (submit)="enviarFormulario()">
+
+	<div class="container col-12">
+		<h3 class="text-center text text-black font form-text-size">Formulário de Cadastros</h3>
+		<br>
+		<div class="row">
+			<div class="col-6">
+				<label class="form-label">Digite seu nome:</label>
+				<input type="text" formControlName="nome" placeholder="Informe o nome" class="form-control" />
+				<div class="text-danger font form-text">
+					<span *ngIf="meuFormulario.controls.nome.errors?.['required']"></span>
+					<span *ngIf="meuFormulario.controls.nome && meuFormulario.controls.nome.errors?.['maxlength']">
+						Máximo 10 letras.
+					</span>
+					<span *ngIf="meuFormulario.controls.nome && meuFormulario.controls.nome.errors?.['minlength']">
+						Mínimo 3 letras.
+					</span>
+				</div>
+			</div>
+			<div class="col-6">
+				<label class="form-label">Digite sua idade:</label>
+				<input type="number" formControlName="idade" placeholder="Informe a idade" class="form-control"/>
+				<div class="text-danger font form-text">
+					<span *ngIf="meuFormulario.controls.idade.errors?.['required']"></span>
+					<span *ngIf="meuFormulario.controls.idade && meuFormulario.controls.idade.errors?.['min'] && meuFormulario.controls.idade.touched">
+						Idade mínima 18 anos.
+					</span>
+					<span *ngIf="meuFormulario.controls.idade && meuFormulario.controls.idade.errors?.['max']">
+						Idade máxima 80 anos.
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label class="form-label">Digite seu email:</label>
+				<input type="text" formControlName="email" placeholder="Informe o email" class="form-control"/>
+				<div class="text-danger font form-text">
+					<span *ngIf="meuFormulario.controls.email.errors?.['required']"></span>
+					<span *ngIf="meuFormulario.controls.email.errors?.['email']">
+						Email inválido.
+					</span>
+				</div>
+			</div>
+			<div class="col-6">
+				<label class="form-label">Selecione seu cargo:</label>
+				<select formControlName="cargo" class="form-select">
+					<option selected disabled value="">Selecione</option>
+					<option value="Analista">Analista</option>
+					<option value="Desenvolvedor">Desenvolvedor</option>
+					<option value="Engenheiro">Engenheiro</option>
+				</select>
+				<span class="form-text" *ngIf="meuFormulario.controls.cargo.errors?.['required']">
+				</span>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<div class="text-center">
+		<span *ngIf="!meuFormulario.valid">
+			<p class="text-secondary font form-text">*O cadastro será liberado após todos os campos estiverem preenchidos!</p>
+		</span>
+		<span *ngIf="meuFormulario.valid">
+			<p class="text-secondary font form-text">*Formulário liberado para cadastro!</p>
+		</span>
+		<br>
+		<button [disabled]="!meuFormulario.valid" class="btn btn-danger" type="submit" value="Cadastrar">Cadastrar</button>
+	</div>
+</form>
+<br>
+
+	<div class="container col-12">
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered table-light table-hover table-sm font form-text table text-center">
+				<thead>
+				<tr>
+					<th scope="col-1">#</th>
+					<th scope="col-2">Nome:</th>
+					<th scope="col-3">Idade:</th>
+					<th scope="col-4">Email:</th>
+					<th scope="col-5">Cargo:</th>
+					<th scope="col-5">Editar:</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr *ngFor="let cadastro of cadastros; let i = index">
+					<td scope="row-1">{{ i + 1 }}</td>
+					<td scope="row-2">{{cadastro.nome}}</td>
+					<td scope="row-3">{{cadastro.idade}}</td>
+					<td scope="row-4">{{cadastro.email}}</td>
+					<td scope="row-5">{{cadastro.cargo}}</td>
+					<td scope="row-6">
+						<button class="btn btn-warning" (click)="editarCadastro(i)">Editar</button>
+					</td>
+				</tr>
+				</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+		
