@@ -1,7 +1,5 @@
-import { NgIf, NgFor } from '@angular/common';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MainModule } from './main-module/main.module';
 
 
 
