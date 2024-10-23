@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: 'app-user-list',
@@ -7,4 +7,10 @@ import { Component } from "@angular/core";
 })
 export class UserListComponent {
 
+  @Input() cadastros: any[] = [];
+  @Output() editCadastro = new EventEmitter<number>();
+
+  editar(index: number) {
+    this.editCadastro.emit(index);
+  }
 }

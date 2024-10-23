@@ -1,6 +1,4 @@
-import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Component } from '@angular/core';
-
 
 
 @Component({
@@ -16,50 +14,21 @@ export class UserComponent {
     email?: string,
     cargo?: string }[] = [];
 
-  meuFormulario = new FormGroup({
-
-    nome: new FormControl("",[Validators.minLength(3), Validators.maxLength(15), Validators.required]),
-    idade: new FormControl(0,[Validators.min(18), Validators.max(80), Validators.required]),
-    email: new FormControl("",[Validators.email, Validators.required]),
-    cargo: new FormControl("",[Validators.required]),
-  });
-
   cadastroEditadoIndex: number | null = null;
+  valorInicialForm: any = {};
 
-  enviarFormulario() {
-    if(this.meuFormulario.valid) {
-      if(this.cadastroEditadoIndex !== null) {
-        this.cadastros[this.cadastroEditadoIndex] = {
-          nome: this.meuFormulario.controls.nome.value!,
-          idade: this.meuFormulario.controls.idade.value!,
-          email: this.meuFormulario.controls.email.value!,
-          cargo: this.meuFormulario.controls.cargo.value!
-        };
-
-        this.cadastroEditadoIndex = null;
-      } else {
-        this.cadastros.push({
-          nome: this.meuFormulario.controls.nome.value!,
-          idade: this.meuFormulario.controls.idade.value!,
-          email: this.meuFormulario.controls.email.value!,
-          cargo: this.meuFormulario.controls.cargo.value!
-        });
-      }
-
-      this.meuFormulario.reset();
-      this.meuFormulario.controls.cargo.setValue('');
+  editFormEnviado(cadastro: any) {
+    if (this.cadastroEditadoIndex !== null) {
+      this.cadastros[this.cadastroEditadoIndex] = cadastro;
+      this.cadastroEditadoIndex = null;
+    } else {
+      this.cadastros.push(cadastro);
     }
+    this.valorInicialForm = {};
   }
 
-  editarCadastro(index: number) {
-    const cadastro = this.cadastros[index];
-    this.meuFormulario.setValue({
-      nome: cadastro.nome || '',
-      idade: cadastro.idade || null,
-      email: cadastro.email || '',
-      cargo: cadastro.cargo || ''
-    });
-
+  cadastroEditado(index: number) {
     this.cadastroEditadoIndex = index;
+    this.valorInicialForm = { ...this.cadastros[index] };
   }
 }
