@@ -1,9 +1,10 @@
 <app-user-form
   [valorInicial]="valorInicialForm"
-  (formEnviado)="editFormEnviado($event)">
+  (formEnviado)="salvarUsuario($event)">
 </app-user-form>
 
 <app-user-list
   [cadastros]="cadastros"
-  (editCadastro)="cadastroEditado($event)">
+  (editCadastro)="buscarUsuarioId($event)"
+  (deleteCadastro)="excluirUsuario($event)">
 </app-user-list>

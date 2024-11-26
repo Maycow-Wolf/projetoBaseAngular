@@ -6,13 +6,13 @@
 		<div class="row">
 			<div class="col-6">
 				<label class="form-label">Digite seu nome:</label>
-				<input type="text" formControlName="nome" placeholder="Informe o nome" class="form-control" />
+				<input type="text" formControlName="name" placeholder="Informe o nome" class="form-control" />
 				<div class="text-danger font form-text">
-					<span *ngIf="meuFormulario.controls.nome.errors?.['required']"></span>
-					<span *ngIf="meuFormulario.controls.nome && meuFormulario.controls.nome.errors?.['maxlength']">
+					<span *ngIf="meuFormulario.controls.name.errors?.['required']"></span>
+					<span *ngIf="meuFormulario.controls.name && meuFormulario.controls.name.errors?.['maxlength']">
 						Máximo 10 letras.
 					</span>
-					<span *ngIf="meuFormulario.controls.nome && meuFormulario.controls.nome.errors?.['minlength']">
+					<span *ngIf="meuFormulario.controls.name && meuFormulario.controls.name.errors?.['minlength']">
 						Mínimo 3 letras.
 					</span>
 				</div>
@@ -62,10 +62,16 @@
 			<p class="text-secondary font form-text">*O cadastro será liberado após todos os campos estiverem preenchidos!</p>
 		</span>
 		<span *ngIf="meuFormulario.valid">
-			<p class="text-secondary font form-text">*Formulário liberado para cadastro!</p>
+			<p class="text-secondary font form-text"> 
+				{{valorInicial.id ? '*Formulário liberado para atualizar!' : '*Formulário liberado para cadastro!'}}</p>
 		</span>
 		<br>
-		<button [disabled]="!meuFormulario.valid" class="btn btn-danger" type="submit" value="Cadastrar">Cadastrar</button>
+	</div>	
+	<div class="d-grid gap-2 col-1 mx-auto">
+		<button [disabled]="!meuFormulario.valid" class="btn btn-outline-secondary" type="submit" value="Cadastrar">
+			{{ valorInicial.id ? 'Atualizar' : 'Cadastrar' }}
+		</button>
+		<button [disabled]="!meuFormulario.valid" class="btn btn-outline-secondary" type="button" (click)="limparFormulario()">Limpar</button>
 	</div>
 </form>
 <br>

@@ -9,19 +9,24 @@
                 <th scope="col-3">Idade:</th>
                 <th scope="col-4">Email:</th>
                 <th scope="col-5">Cargo:</th>
-                <th scope="col-5">Editar:</th>
+                <th scope="col-5">Editar</th>
+                <th scope="col-6">Excluir</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let cadastro of cadastros; let i = index">
-                <td scope="row-1">{{ i + 1 }}</td>
-                <td scope="row-2">{{cadastro.nome}}</td>
+                <td scope="row-1">{{ cadastro.id }}</td>
+                <td scope="row-2">{{cadastro.name}}</td>
                 <td scope="row-3">{{cadastro.idade}}</td>
                 <td scope="row-4">{{cadastro.email}}</td>
                 <td scope="row-5">{{cadastro.cargo}}</td>
                 <td scope="row-6">
-                    <button class="btn btn-warning" (click)="editar(i)">Editar</button>
+                    <button class="btn btn-warning" (click)="editar(cadastro.id)">Editar</button>
                 </td>
+                <td scope="row-7">
+                <button class="btn btn-danger" (click)="excluir(cadastro.id)">Excluir</button>
+                </td>
+
             </tr>
             </tbody>
             </table>
