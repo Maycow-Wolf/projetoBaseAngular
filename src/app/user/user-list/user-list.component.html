@@ -14,17 +14,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let cadastro of cadastros; let i = index">
-                <td scope="row-1">{{ cadastro.id }}</td>
-                <td scope="row-2">{{cadastro.name}}</td>
-                <td scope="row-3">{{cadastro.idade}}</td>
-                <td scope="row-4">{{cadastro.email}}</td>
-                <td scope="row-5">{{cadastro.cargo}}</td>
+            <tr *ngFor="let item of cadastros; let i = index">
+                <td scope="row-1">{{item.id}}</td>
+                <td scope="row-2">{{item.name}}</td>
+                <td scope="row-3">{{item.idade}}</td>
+                <td scope="row-4">{{item.email}}</td>
+                <td scope="row-5">{{item.cargo}}</td>
                 <td scope="row-6">
-                    <button class="btn btn-warning" (click)="editar(cadastro.id)">Editar</button>
+                    <button class="btn btn-warning" (click)="editar(item.id)">Editar</button>
                 </td>
                 <td scope="row-7">
-                <button class="btn btn-danger" (click)="excluir(cadastro.id)">Excluir</button>
+                <button class="btn btn-danger" (click)="excluir(item.id)">Excluir</button>
                 </td>
 
             </tr>

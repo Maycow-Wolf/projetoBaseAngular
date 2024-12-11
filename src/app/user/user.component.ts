@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { error } from 'node:console';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { BlockList } from 'node:net';
 
 @Component({
-  selector: 'app-user',
+  selector: 'user',
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
 
 export class UserComponent implements OnInit {
-  cadastros: any[] = [];
+  usuarios: any[] = [];
   cadastroEditadoId: number | null = null;
-  valorInicialForm: any = {};
+  form: any = {};
+  exibirFormulario: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.carregarUsuarios();
@@ -23,7 +24,7 @@ export class UserComponent implements OnInit {
   carregarUsuarios() {
     this.userService.getUsers().subscribe(
       (users) => {
-        this.cadastros = users;
+        this.usuarios = users;
       },
       (error) => {
         console.error('Erro ao carregar usuários:', error);
@@ -34,7 +35,8 @@ export class UserComponent implements OnInit {
   buscarUsuarioId(id: number) {
     this.userService.getUserById(id).subscribe(
       (user) => {
-        this.valorInicialForm = user;
+        this.exibirFormulario = true;
+        this.form = user;
         this.cadastroEditadoId = id;
       },
       (error) => {
@@ -47,10 +49,10 @@ export class UserComponent implements OnInit {
     if (this.cadastroEditadoId !== null){
       this.userService.updateUser(this.cadastroEditadoId, cadastro).subscribe(
         (usuarioAtualizado) => {
-          this.cadastros = this.cadastros.map((user) =>
+          this.usuarios = this.usuarios.map((user) =>
             user.id === usuarioAtualizado.id ? usuarioAtualizado : user
         );
-        this.resetarFormulario();
+        this.voltarListagem();
         },
         (error) => {
           console.error('Erro ao atualizar usuário', error);
@@ -59,8 +61,8 @@ export class UserComponent implements OnInit {
     } else {
       this.userService.createUser(cadastro).subscribe(
         (novoUsuario) => {
-          this.cadastros.push(novoUsuario);
-          this.resetarFormulario();
+          this.usuarios.push(novoUsuario);
+          this.voltarListagem();
         },
         (error) => {
           console.error('Erro ao criar usuário', error);
@@ -72,7 +74,7 @@ export class UserComponent implements OnInit {
   excluirUsuario(id: number){
     this.userService.deleteUser(id).subscribe(
       () => {
-        this.cadastros = this.cadastros.filter((user) => user.id !== id);
+        this.usuarios = this.usuarios.filter((user) => user.id !== id);
       },
       (error) => {
         console.error('Erro ao excluir usuário', error);
@@ -81,9 +83,13 @@ export class UserComponent implements OnInit {
   }
 
   resetarFormulario(){
-      this.valorInicialForm = {};
-      this.cadastroEditadoId = null;
+    this.form = {};
+    this.cadastroEditadoId = null;
+    this.voltarListagem();
+  }
+
+  voltarListagem() {
+    this.exibirFormulario = false;
+    this.carregarUsuarios();
   }
 }
-
-

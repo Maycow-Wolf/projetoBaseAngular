@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private apiUrl = 'https://660426162393662c31d0bed1.mockapi.io/api/v1/Users';
 

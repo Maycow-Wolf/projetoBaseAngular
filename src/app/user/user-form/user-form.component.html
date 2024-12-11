@@ -47,8 +47,8 @@
 				<select formControlName="cargo" class="form-select">
 					<option selected disabled value="">Selecione</option>
 					<option value="Analista">Analista</option>
-					<option value="Desenvolvedor">Desenvolvedor</option>
-					<option value="Engenheiro">Engenheiro</option>
+					<option value="Desenvolvedor">Desenvolvedor(a)</option>
+					<option value="Engenheiro">Engenheiro(a)</option>
 				</select>
 				<span class="form-text" *ngIf="meuFormulario.controls.cargo.errors?.['required']">
 				</span>
@@ -71,7 +71,7 @@
 		<button [disabled]="!meuFormulario.valid" class="btn btn-outline-secondary" type="submit" value="Cadastrar">
 			{{ valorInicial.id ? 'Atualizar' : 'Cadastrar' }}
 		</button>
-		<button [disabled]="!meuFormulario.valid" class="btn btn-outline-secondary" type="button" (click)="limparFormulario()">Limpar</button>
+		<button class="btn btn-outline-secondary" type="button" (click)="voltarList()">Cancelar</button>
 	</div>
 </form>
 <br>

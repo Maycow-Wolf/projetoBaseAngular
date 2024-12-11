@@ -1,19 +1,19 @@
-import { Component, EventEmitter, Input, Output} from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, Output} from "@angular/core";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-user-form',
+  selector: 'user-form',
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnChanges {
 
   @Input() valorInicial: any = {};
   @Output() formEnviado = new EventEmitter<any>();
+  @Output() cancelarForm = new EventEmitter();
     
   meuFormulario = new FormGroup({
-
     name: new FormControl("",[Validators.minLength(3), Validators.maxLength(15), Validators.required]),
     idade: new FormControl(0,[Validators.min(18), Validators.max(80), Validators.required]),
     email: new FormControl("",[Validators.email, Validators.required]),
@@ -42,6 +42,10 @@ export class UserFormComponent {
   limparFormulario(){
       this.meuFormulario.reset();
       this.meuFormulario.controls.cargo.setValue('');
-      this.valorInicial = {};
+      this.cancelarForm.emit();
+  }
+
+  voltarList() {
+    this.cancelarForm.emit();
   }
 }

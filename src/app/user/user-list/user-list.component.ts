@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, output, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'user-list',
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
@@ -11,10 +11,12 @@ export class UserListComponent {
   @Output() editCadastro = new EventEmitter<number>();
   @Output() deleteCadastro = new EventEmitter<number>();
 
-  editar(index: number) {
-    this.editCadastro.emit(index);
+  editar(id: number) {
+    this.editCadastro.emit(id);
   }
+
   excluir(id: number) {
     this.deleteCadastro.emit(id);
   }
+
 }

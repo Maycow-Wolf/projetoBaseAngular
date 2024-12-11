@@ -5,7 +5,8 @@ import { UserFormComponent } from '../user-form/user-form.component';
 import { UserListComponent } from '../user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
+import { LoginComponent } from '../../login/login.component';
 
 
 
@@ -13,7 +14,8 @@ import { UserService } from '../../user.service';
   declarations: [
     UserComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -34,10 +36,3 @@ import { UserService } from '../../user.service';
 })
 
 export class MainModule { }
-
-
-/* HttpClientModule foi substituído pela provideHttpClient() função de provedor já existente.
-  importar no main.module.ts o providers: [provideHttpClient()]
-
-  importar provideHttpClient() aos provedores no app.config.ts
-*/
