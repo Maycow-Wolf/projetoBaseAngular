@@ -7,8 +7,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { LoginComponent } from '../../login/login.component';
-
-
+import { AppRoutingModule } from '../../app.routes';
 
 @NgModule({
   declarations: [
@@ -23,12 +22,14 @@ import { LoginComponent } from '../../login/login.component';
     NgIf,
     NgFor,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   exports: [
     UserComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent
   ],
   providers: [
     UserService

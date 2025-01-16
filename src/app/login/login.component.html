@@ -1,1 +1,50 @@
-<p>login works!</p>
+<form [formGroup]="meuLogin" (ngSubmit)="loginCadastro()">
+    <div class="container col-12">
+        <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
+		<br>
+        <div class="row justify-content-center">
+			<div class="col-3">
+				<input type="text" formControlName="email" placeholder="Email" class="form-control"/>
+				<div class="text-danger font form-text">
+					<span *ngIf="meuLogin.controls.email.errors?.['required'] && meuLogin.controls.email.touched">
+                        O campo email é obrigatório.
+                    </span>
+					<span *ngIf="meuLogin.controls.email.errors?.['email']">
+						Email inválido.
+					</span>
+				</div>
+			</div>
+        </div>    
+        <br>
+        <div class="row justify-content-center">     
+            <div class="col-3">
+                <input type="password" formControlName="senha" placeholder="Senha" class="form-control"/>
+                <div class="text-danger font form-text">
+                    <span *ngIf="meuLogin.controls.senha.errors?.['required'] && meuLogin.controls.senha.touched">
+                        O campo senha é obrigatório.
+                    </span>
+                    <span *ngIf="meuLogin.controls.senha.errors?.['minlength'] && meuLogin.controls.senha.touched">
+                        Mínimo 6 dígitos.
+                    </span>
+                    <span *ngIf="meuLogin.controls.senha.errors?.['maxlength'] && meuLogin.controls.senha.touched">
+                        Máximo 10 dígitos.
+                    </span>
+                </div>
+            </div>
+        </div>    
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-1">
+                <button [disabled]="!meuLogin.valid" class="btn btn-outline-secondary" type="submit">
+                    Login
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <p>Não tem cadastro? <a href="javascript:void(0)" (click)="acessarCadastro()" class="link-primary">Registre-se</a></p>
+            </div>
+        </div>
+    </div>    
+</form>
