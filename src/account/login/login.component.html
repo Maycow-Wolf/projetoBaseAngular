@@ -1,4 +1,4 @@
-<form [formGroup]="meuLogin" (ngSubmit)="loginCadastro()">
+<form [formGroup]="meuLogin" (ngSubmit)="acessarUsuarios()">
     <div class="container col-12">
         <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
 		<br>
@@ -43,7 +43,7 @@
         <br>
         <div class="row justify-content-center">
             <div class="col-3">
-                <p>Não tem cadastro? <a href="javascript:void(0)" (click)="acessarCadastro()" class="link-primary">Registre-se</a></p>
+                <p>Não tem cadastro? <a href="javascript:void(0)" (click)="acessarCadastro()" class="link-opacity-50-hover">Registre-se</a></p>
             </div>
         </div>
     </div>    

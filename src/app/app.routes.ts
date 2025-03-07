@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserFormComponent } from './user/user-form/user-form.component';
-import { LoginComponent } from './login/login.component';
 
-export const routes: Routes = [{ 
-    path: '',
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'registro', component: UserFormComponent },
-      { path: '**', redirectTo:'/login', pathMatch:'full' },
-    ]
-}];
+export const routes: Routes = [
+  {path: '', redirectTo:'/login', pathMatch:'full' },
+  
+  {
+    path: 'login',
+    loadChildren: () => import('../account/login.module').then(m => m.LoginModule), //Lazy load main module
+    data: { preload: true }
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/main-module/main.module').then(m => m.MainModule), //Lazy load admin module
+    data: { preload: true }
+  },
+  // { 
+  //   path: '**', redirectTo:'/login', pathMatch:'full' 
+  // },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

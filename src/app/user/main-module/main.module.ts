@@ -6,15 +6,14 @@ import { UserListComponent } from '../user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
-import { LoginComponent } from '../../login/login.component';
 import { AppRoutingModule } from '../../app.routes';
+import { MainRoutes } from './main.routes';
 
 @NgModule({
   declarations: [
     UserComponent,
     UserFormComponent,
-    UserListComponent,
-    LoginComponent
+    UserListComponent
   ],
   imports: [
     FormsModule,
@@ -23,13 +22,13 @@ import { AppRoutingModule } from '../../app.routes';
     NgFor,
     CommonModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainRoutes
   ],
   exports: [
     UserComponent,
     UserFormComponent,
-    UserListComponent,
-    LoginComponent
+    UserListComponent
   ],
   providers: [
     UserService

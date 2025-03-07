@@ -1,4 +1,6 @@
 <div class="container col-12">
+    <h3 class="text-center text text-black font form-text-size">Listagem dos usuários</h3>
+    <br>
     <div class="row">
         <div class="col-12">
             <table class="table table-bordered table-light table-hover table-sm font form-text table text-center">
@@ -9,8 +11,9 @@
                 <th scope="col-3">Idade:</th>
                 <th scope="col-4">Email:</th>
                 <th scope="col-5">Cargo:</th>
-                <th scope="col-5">Editar</th>
-                <th scope="col-6">Excluir</th>
+                <th scope="col-6">Senha</th>
+                <th scope="col-7">Editar</th>
+                <th scope="col-8">Excluir</th>
             </tr>
             </thead>
             <tbody>
@@ -20,16 +23,23 @@
                 <td scope="row-3">{{item.idade}}</td>
                 <td scope="row-4">{{item.email}}</td>
                 <td scope="row-5">{{item.cargo}}</td>
-                <td scope="row-6">
+                <td scope="row-6">{{item.senha}}</td>
+                <td scope="row-7">
                     <button class="btn btn-warning" (click)="editar(item.id)">Editar</button>
                 </td>
                 <td scope="row-7">
-                <button class="btn btn-danger" (click)="excluir(item.id)">Excluir</button>
+                    <button class="btn btn-danger" (click)="excluir(item.id)">Excluir</button>
                 </td>
-
             </tr>
             </tbody>
             </table>
+            <div class="text-center d-grid gap-2 col-2 mx-auto">
+                <button class="btn btn-primary" (click)="adicionarUsuario()">Adicionar Usuário</button>
+            </div>
+            <br>
+            <div class="text-center d-grid gap-2 col-2 mx-auto">
+                <button class="btn btn-success" (click)="sair()">Sair</button>
+            </div>
         </div>
     </div>
 </div>
