@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   email: string = '';
   senha: string = '';
   usuarios: any[] = [];
+  mensagem: string = '';
+  mostrarSenha: boolean = false;
 
   meuLogin = new FormGroup({
     email: new FormControl("", [Validators.email, Validators.required]),
@@ -46,10 +48,18 @@ export class LoginComponent implements OnInit {
     const usuarioEncontrado = this.usuarios.find(
       (user) => user.email === email && user.senha === senha
     );
-    if(usuarioEncontrado) {
+    if (usuarioEncontrado) {
       this.router.navigate(['/user/list']);
     } else {
-      alert("E-mail ou senha inválidos!")
+      this.mensagem = 'E-mail ou senha inválidos!';
     }
+  }
+
+  limparMensagem () {
+    this.mensagem = '';
+  }
+
+  alternarVisibilidadeSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
   }
 }

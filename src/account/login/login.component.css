@@ -1,0 +1,38 @@
+.mensagem {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+ /* Ajusta a posição do campo de senha */
+.position-relative {
+  position: relative;
+}
+
+/* Ajusta o input de senha */
+.input-senha {
+  padding-right: 40px; /* Para não sobrepor o ícone */
+}
+
+/* Ícone do olho dentro do input */
+.icone-senha {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 18px;
+  z-index: 10;
+}
+
+/* Mudar cor ao passar o mouse */
+.icone-senha:hover {
+  color: #000;
+}
+

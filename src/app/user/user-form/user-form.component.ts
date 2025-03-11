@@ -127,7 +127,7 @@ export class UserFormComponent implements OnChanges {
   cancelarCadastro() {
     this.meuFormulario.reset();
     this.meuFormulario.controls.cargo.setValue('');
-    this.router.navigate([this.cadastroEditadoId ? '/user/list' : '/login']); 
+    this.router.navigate([this.origemCadastro === 'login' ? '/login' : '/user/list']);
   }
 
   // limparFormulario(){

@@ -1,13 +1,17 @@
+<div *ngIf="mensagem"  class=" mensagem font form-text">
+    {{ mensagem }}
+</div>
 <form [formGroup]="meuLogin" (ngSubmit)="acessarUsuarios()">
     <div class="container col-12">
         <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
 		<br>
         <div class="row justify-content-center">
 			<div class="col-3">
-				<input type="text" formControlName="email" placeholder="Email" class="form-control"/>
+				<input type="text" formControlName="email" placeholder="Digite o email" 
+                class="form-control" required (focus)="limparMensagem()"/>
 				<div class="text-danger font form-text">
 					<span *ngIf="meuLogin.controls.email.errors?.['required'] && meuLogin.controls.email.touched">
-                        O campo email é obrigatório.
+                        Campo email obrigatório.
                     </span>
 					<span *ngIf="meuLogin.controls.email.errors?.['email']">
 						Email inválido.
@@ -16,12 +20,19 @@
 			</div>
         </div>    
         <br>
-        <div class="row justify-content-center">     
+        <div class="row justify-content-center">
             <div class="col-3">
-                <input type="password" formControlName="senha" placeholder="Senha" class="form-control"/>
+                <div class="input-group">
+                    <input [type]="mostrarSenha ? 'text' : 'password'" 
+                    formControlName="senha" placeholder="Digite a senha" 
+                    class="form-control input-senha" required (focus)="limparMensagem()"/>
+                    <i class = 'fa icone-senha' (click)="alternarVisibilidadeSenha()"  
+                    [ngClass]="mostrarSenha ? 'fa fa-eye-slash' : 'fa fa-eye'">
+                    </i>
+                </div>
                 <div class="text-danger font form-text">
                     <span *ngIf="meuLogin.controls.senha.errors?.['required'] && meuLogin.controls.senha.touched">
-                        O campo senha é obrigatório.
+                        Campo senha obrigatório.
                     </span>
                     <span *ngIf="meuLogin.controls.senha.errors?.['minlength'] && meuLogin.controls.senha.touched">
                         Mínimo 6 dígitos.
