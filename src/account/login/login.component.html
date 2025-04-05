@@ -5,6 +5,7 @@
     <div class="container col-12">
         <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
 		<br>
+		<br>
         <div class="row justify-content-center">
 			<div class="col-3">
 				<input type="text" formControlName="email" placeholder="Digite o email" 
@@ -44,18 +45,18 @@
             </div>
         </div>    
         <br>
-        <div class="row justify-content-center">
-            <div class="col-1">
-                <button [disabled]="!meuLogin.valid" class="btn btn-outline-secondary" type="submit">
-                    Login
-                </button>
-            </div>
-        </div>
         <br>
         <div class="row justify-content-center">
-            <div class="col-3">
-                <p>Não tem cadastro? <a href="javascript:void(0)" (click)="acessarCadastro()" class="link-opacity-50-hover">Registre-se</a></p>
-            </div>
+            <div class="d-grid gap-2 col-3 mx-auto">
+            <button [disabled]="!meuLogin.valid" class="btn btn-primary" type="submit">
+                Login
+            </button>
+        </div>
+        </div>
+        <br>
+        <div class="row text-center">
+            <p>Não tem login? <a href="javascript:void(0)" (click)="acessarCadastro()"
+             class="link-underline link-underline-opacity-0">Cadastre-se  ></a></p>
         </div>
     </div>    
 </form>

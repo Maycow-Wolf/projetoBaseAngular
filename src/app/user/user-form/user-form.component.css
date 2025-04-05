@@ -1,0 +1,90 @@
+::ng-deep .bs-datepicker-container.bs-datepicker,
+::ng-deep .bs-datepicker {
+    background-color: #eff2fa !important;
+    color: rgb(53, 146, 246) !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    padding: 10px !important;
+    border: 3px solid rgb(53, 146, 246) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+    position: absolute !important; /* Garante que fique flutuando */
+   
+}
+
+/* Estilizando os botões de navegação (setas para mudar o mês) */
+::ng-deep .bs-datepicker-head button {
+    background: transparent !important;
+    color: rgb(53, 146, 246) !important;
+    border: none !important;
+    font-size: 20px !important;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o mouse nos botões de navegação */
+::ng-deep .bs-datepicker-head button:hover {
+    transform: scale(1.2);
+    color: rgb(53, 146, 246) !important;
+}
+
+/* Estilizando os botões dos dias do mês */
+::ng-deep .bs-datepicker-body table td span {
+    border-radius: 50% !important; /* Deixar arredondado */
+    padding: 10px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* Hover nos dias do calendário */
+::ng-deep .bs-datepicker-body table td span:hover {
+    background-color: rgb(53, 146, 246) !important;
+    color: white !important;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Dias desabilitados (exemplo: datas passadas ou bloqueadas) */
+::ng-deep .bs-datepicker-body table td.disabled span {
+    color: #ccc !important;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* Hover nos botões */
+::ng-deep .bs-datepicker-footer button:hover {
+    background-color: rgb(53, 146, 246) !important;
+    transform: scale(1.1);
+}   
+    
+
+ /* Ajusta a posição do campo de senha para o olho */
+ .input-group.position-relative {
+    position: relative;
+  }
+  
+  /* Ajusta o input de senha */
+  .input-senha {
+    width: 100%;
+    padding-right: 45px; /* Ajusta espaço para o ícone */
+    height: 38px; /* Garante que a altura seja fixa */
+    border-radius: 6px !important;
+  }
+  
+  /* Ícone do olho dentro do input */
+  .icone-senha {
+    position: absolute;
+    top: 75%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    font-size: 18px;
+    z-index: 10;
+  }
+  
+  /* Mudar cor ao passar o mouse */
+  .icone-senha:hover {
+    color: #000;
+  }
+  

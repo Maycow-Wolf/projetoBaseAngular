@@ -18,17 +18,13 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<label class="form-label">Digite sua idade:</label>
-				<input type="number" formControlName="idade" placeholder="Informe a idade" class="form-control"/>
-				<div class="text-danger font form-text">
-					<span *ngIf="meuFormulario.controls.idade.errors?.['required']"></span>
-					<span *ngIf="meuFormulario.controls.idade && meuFormulario.controls.idade.errors?.['min'] && meuFormulario.controls.idade.touched">
-						Idade mínima 18 anos.
-					</span>
-					<span *ngIf="meuFormulario.controls.idade && meuFormulario.controls.idade.errors?.['max']">
-						Idade máxima 80 anos.
-					</span>
-				</div>
+				<label class="form-label">Data de nascimento:</label>
+				<input 
+				type="text" 
+				formControlName="idade" 
+				placeholder="Selecione" class="form-control"
+				bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+				(keydown)="false"/> 
 			</div>
 		</div>
 		<div class="row">
@@ -43,8 +39,17 @@
 				</div>
 			</div>
 			<div class="col-4">
-				<label class="form-label">Digite sua senha:</label>
-				<input type="password" formControlName="senha" placeholder="Informe sua senha" class="form-control" />
+				<div class="input-group">
+					<label class="form-label">Digite sua senha:</label>
+					<input [type]="mostrarSenha ? 'text' : 'password'" formControlName="senha" placeholder="Informe sua senha" class="form-control input-senha"/>
+					<span class="icone-senha">
+						<i 
+							class="fa" 
+							(click)="alternarVisibilidadeSenha()"  
+							[ngClass]="mostrarSenha ? 'fa fa-eye-slash' : 'fa fa-eye'">
+						</i>
+					</span>
+				</div>
 				<div class="text-danger font form-text">
 					<span *ngIf="meuFormulario.controls.senha.errors?.['required']"></span>
 					<span *ngIf="meuFormulario.controls.senha && meuFormulario.controls.senha.errors?.['maxlength']">
@@ -80,11 +85,12 @@
 		</span>
 		<br>
 	</div>	
-	<div class="d-grid gap-2 col-1 mx-auto">
-		<button [disabled]="!meuFormulario.valid" class="btn btn-outline-secondary" type="submit" value="Cadastrar">
+	<br>
+	<div class="d-grid gap-2 col-2 mx-auto">
+		<button [disabled]="!meuFormulario.valid" class="btn btn-primary" type="submit" value="Cadastrar">
 			{{ cadastroEditadoId ? 'Atualizar' : 'Cadastrar' }}
 		</button>
-		<button class="btn btn-outline-secondary" type="button" (click)="cancelarCadastro()">Cancelar</button>
-	</div>
+		<button class="btn btn-secondary" type="button" (click)="cancelarCadastro()">Cancelar</button>
+	</div>	
 </form>
 <br>

@@ -1,3 +1,4 @@
+
 .mensagem {
     padding: 10px;
     margin: 10px 0;
@@ -8,6 +9,15 @@
     color: #721c24;
     border: 1px solid #f5c6cb;
   }
+
+  
+
+  .center {
+    background-color: rgb(165, 191, 255);
+    padding: 20px;
+    margin: 200px auto;
+
+  }
   
  /* Ajusta a posição do campo de senha */
 .position-relative {
@@ -17,6 +27,7 @@
 /* Ajusta o input de senha */
 .input-senha {
   padding-right: 40px; /* Para não sobrepor o ícone */
+  border-radius: 6px !important;
 }
 
 /* Ícone do olho dentro do input */

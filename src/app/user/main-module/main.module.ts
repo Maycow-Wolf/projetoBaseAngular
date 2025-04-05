@@ -8,6 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { AppRoutingModule } from '../../app.routes';
 import { MainRoutes } from './main.routes';
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+
+defineLocale('pt-br', ptBrLocale);
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { MainRoutes } from './main.routes';
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    MainRoutes
+    MainRoutes,
+    BsDatepickerModule
   ],
   exports: [
     UserComponent,
@@ -35,4 +41,8 @@ import { MainRoutes } from './main.routes';
   ],
 })
 
-export class MainModule { }
+export class MainModule { 
+  constructor(private bsLocaleService: BsLocaleService){
+    this.bsLocaleService.use('pt-br')
+  }
+}
