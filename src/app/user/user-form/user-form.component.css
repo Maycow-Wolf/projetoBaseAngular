@@ -8,8 +8,7 @@
     border: 3px solid rgb(53, 146, 246) !important;
     border-radius: 8px !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
-    position: absolute !important; /* Garante que fique flutuando */
-   
+     /* Garante que fique flutuando */
 }
 
 /* Estilizando os botões de navegação (setas para mudar o mês) */
@@ -56,35 +55,5 @@
     background-color: rgb(53, 146, 246) !important;
     transform: scale(1.1);
 }   
-    
 
- /* Ajusta a posição do campo de senha para o olho */
- .input-group.position-relative {
-    position: relative;
-  }
-  
-  /* Ajusta o input de senha */
-  .input-senha {
-    width: 100%;
-    padding-right: 45px; /* Ajusta espaço para o ícone */
-    height: 38px; /* Garante que a altura seja fixa */
-    border-radius: 6px !important;
-  }
-  
-  /* Ícone do olho dentro do input */
-  .icone-senha {
-    position: absolute;
-    top: 75%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #777;
-    font-size: 18px;
-    z-index: 10;
-  }
-  
-  /* Mudar cor ao passar o mouse */
-  .icone-senha:hover {
-    color: #000;
-  }
   

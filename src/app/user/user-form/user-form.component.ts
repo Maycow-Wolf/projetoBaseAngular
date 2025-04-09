@@ -101,7 +101,7 @@ export class UserFormComponent implements OnChanges {
       );      
     }
   }
-
+  
   salvarUsuario(cadastro: any) {
     if (this.cadastroEditadoId !== null){
       this.userService.updateUser(this.cadastroEditadoId, cadastro).subscribe(

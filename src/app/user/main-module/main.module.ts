@@ -1,4 +1,4 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from '../user.component';
 import { UserFormComponent } from '../user-form/user-form.component';
@@ -37,7 +37,8 @@ defineLocale('pt-br', ptBrLocale);
     UserListComponent
   ],
   providers: [
-    UserService
+    UserService,
+    DatePipe
   ],
 })
 
