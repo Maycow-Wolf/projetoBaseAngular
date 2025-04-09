@@ -14,26 +14,28 @@
             <tr>
                 <th scope="col-1">#</th>
                 <th scope="col-2">Nome:</th>
-                <th scope="col-3">Idade:</th>
-                <th scope="col-4">Email:</th>
-                <th scope="col-5">Cargo:</th>
-                <th scope="col-6">Senha</th>
-                <th scope="col-7">Editar</th>
-                <th scope="col-8">Excluir</th>
+                <th scope="col-3">Data de Nascimento:</th>
+                <th scope="col-4">Idade:</th>
+                <th scope="col-5">Email:</th>
+                <th scope="col-6">Cargo:</th>
+                <th scope="col-7">Senha</th>
+                <th scope="col-8">Editar</th>
+                <th scope="col-9">Excluir</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let item of cadastros; let i = index">
                 <td scope="row-1">{{item.id}}</td>
                 <td scope="row-2">{{item.name}}</td>
-                <td scope="row-3">{{calcularIdade(item.idade) }}</td>
-                <td scope="row-4">{{item.email}}</td>
-                <td scope="row-5">{{item.cargo}}</td>
-                <td scope="row-6">{{item.senha}}</td>
-                <td scope="row-7">
+                <td scope="row-3">{{formatarData(item.idade)}}</td>
+                <td scope="row-4">{{calcularIdade(item.idade)}}</td>
+                <td scope="row-5">{{item.email}}</td>
+                <td scope="row-6">{{item.cargo}}</td>
+                <td scope="row-7">{{item.senha}}</td>
+                <td scope="row-8">
                     <button class="btn btn-warning" (click)="editar(item.id)">Editar</button>
                 </td>
-                <td scope="row-7">
+                <td scope="row-8">
                     <button class="btn btn-danger" (click)="excluir(item.id)">Excluir</button>
                 </td>
             </tr>

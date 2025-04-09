@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'user-list',
@@ -15,7 +16,8 @@ export class UserListComponent {
   
 
   constructor(private userService: UserService,
-      private router: Router) {}
+      private router: Router,
+      private datePipe: DatePipe) {}
 
   ngOnChanges(changes: SimpleChanges) {
   }
@@ -35,10 +37,14 @@ export class UserListComponent {
     );
   }
 
+  formatarData(data: string): string {
+    return this.datePipe.transform(data, 'dd/MM/yyyy') || ''; //dataPipe formatar datas
+  }
+
   calcularIdade(dataNascimento: string): number {
     if (!dataNascimento) return 0;
 
-    const nascimento = new Date(dataNascimento);
+    const nascimento = new Date(dataNascimento); // converte a string dataNascimento para formato data
     const hoje = new Date();
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
