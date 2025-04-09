@@ -1,21 +1,22 @@
 <div *ngIf="exibirFormulario">
 	<user-form
 		[valorInicial]="form"
-		(formEnviado)="salvarUsuario($event)"
-		(cancelarForm)="resetarFormulario()">
+		[cadastroEditadoId]="cadastroEditadoId">
 	</user-form>
 </div>
-
-<div *ngIf="!exibirFormulario">
+	
+<!-- <div *ngIf="!exibirFormulario"> 
 	<h3 class="text-center">Listagem de usuários</h3>
 	<div class="container col-12">
 		<div class="d-grid col-12 justify-content-md-end">
-			<button class="btn btn-primary" (click)="exibirFormulario = true">Cadastrar</button>
+			<button class="btn btn-primary" (click)="exibirFormulario = true">Cadastrar</button> 
 		</div>
-	</div>
+	</div> -->
 	<user-list
 		[cadastros]="usuarios"
 		(editCadastro)="buscarUsuarioId($event)"
 		(deleteCadastro)="excluirUsuario($event)">
 	</user-list>
-</div>
+<!-- </div> -->
+<!-- (cancelarForm)="resetarFormulario()" -->
+

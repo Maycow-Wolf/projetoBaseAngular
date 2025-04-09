@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { BlockList } from 'node:net';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'user',
@@ -14,11 +15,12 @@ export class UserComponent implements OnInit {
   form: any = {};
   exibirFormulario: boolean = false;
 
-  constructor(private userService: UserService) {
-  }
+  constructor(private userService: UserService,
+    private router: Router) {}
 
   ngOnInit() {
     this.carregarUsuarios();
+    
   }
 
   carregarUsuarios() {
@@ -36,39 +38,13 @@ export class UserComponent implements OnInit {
     this.userService.getUserById(id).subscribe(
       (user) => {
         this.exibirFormulario = true;
-        this.form = user;
-        this.cadastroEditadoId = id;
+        this.form = {...user};
+        this.cadastroEditadoId = user.id;
       },
       (error) => {
         console.error('Erro ao carregar usuários pelo id:', error);
       }
     );
-  }
-
-  salvarUsuario(cadastro: any) {
-    if (this.cadastroEditadoId !== null){
-      this.userService.updateUser(this.cadastroEditadoId, cadastro).subscribe(
-        (usuarioAtualizado) => {
-          this.usuarios = this.usuarios.map((user) =>
-            user.id === usuarioAtualizado.id ? usuarioAtualizado : user
-        );
-        this.voltarListagem();
-        },
-        (error) => {
-          console.error('Erro ao atualizar usuário', error);
-        }
-      );
-    } else {
-      this.userService.createUser(cadastro).subscribe(
-        (novoUsuario) => {
-          this.usuarios.push(novoUsuario);
-          this.voltarListagem();
-        },
-        (error) => {
-          console.error('Erro ao criar usuário', error);
-        }
-      );
-    }
   }
 
   excluirUsuario(id: number){
@@ -82,14 +58,12 @@ export class UserComponent implements OnInit {
     );
   }
 
-  resetarFormulario(){
-    this.form = {};
-    this.cadastroEditadoId = null;
-    this.voltarListagem();
-  }
+  // resetarFormulario(){
+  //   this.form = {};
+  //   this.cadastroEditadoId = null;
+  // }
 
-  voltarListagem() {
-    this.exibirFormulario = false;
-    this.carregarUsuarios();
-  }
+  // voltarListagem() {
+  //   this.exibirFormulario = false;
+  // }
 }

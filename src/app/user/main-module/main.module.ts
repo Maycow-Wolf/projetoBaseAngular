@@ -6,16 +6,19 @@ import { UserListComponent } from '../user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
-import { LoginComponent } from '../../login/login.component';
+import { AppRoutingModule } from '../../app.routes';
+import { MainRoutes } from './main.routes';
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
 
-
+defineLocale('pt-br', ptBrLocale);
 
 @NgModule({
   declarations: [
     UserComponent,
     UserFormComponent,
-    UserListComponent,
-    LoginComponent
+    UserListComponent
   ],
   imports: [
     FormsModule,
@@ -23,7 +26,10 @@ import { LoginComponent } from '../../login/login.component';
     NgIf,
     NgFor,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    MainRoutes,
+    BsDatepickerModule
   ],
   exports: [
     UserComponent,
@@ -35,4 +41,8 @@ import { LoginComponent } from '../../login/login.component';
   ],
 })
 
-export class MainModule { }
+export class MainModule { 
+  constructor(private bsLocaleService: BsLocaleService){
+    this.bsLocaleService.use('pt-br')
+  }
+}
