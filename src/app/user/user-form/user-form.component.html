@@ -39,15 +39,15 @@
 				</div>
 			</div>
 			<div class="col-4">
-				<label for="campoSenha" class="form-label">Digite sua senha:</label>
+				<label class="form-label">Digite sua senha:</label>
 				<div class="input-group">
-					<input [type]="mostrarSenha ? 'text' : 'password'" id="campoSenha"
+					<input [type]="mostrarSenha ? 'text' : 'password'"
 						formControlName="senha" 
 						placeholder="Informe sua senha" 
 						class="form-control"/>
 					<div class="input-group-text">
 						<i  
-							(click)="alternarVisibilidadeSenha()"  
+							class = 'fa icone-senha'(click)="alternarVisibilidadeSenha()"  
 							[ngClass]="mostrarSenha ? 'fa fa-eye-slash' : 'fa fa-eye'">
 						</i>
 					</div>
