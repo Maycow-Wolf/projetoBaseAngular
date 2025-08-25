@@ -1,72 +1,76 @@
-<div *ngIf="mensagem"  class=" mensagem font form-text">
-    {{ mensagem }}
-</div>
-<form [formGroup]="meuLogin" (ngSubmit)="acessarUsuarios()">
-    <div class="container col-12">
-        <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
-		<br>
-		<br>
-        <div class="row justify-content-center">
-			<div class="col-3">
-                <label class="form-label">Digite seu email:</label>
-				<input type="text" 
-                formControlName="email" 
-                placeholder="Informe seu email" 
-                class="form-control" 
-                required (focus)="limparMensagem()"/>
-				<div class="text-danger font form-text">
-					<span *ngIf="meuLogin.controls.email.errors?.['required'] && meuLogin.controls.email.touched">
-                        Campo email obrigatório.
-                    </span>
-					<span *ngIf="meuLogin.controls.email.errors?.['email']">
-						Email inválido.
-					</span>
-				</div>
-			</div>
-        </div>    
-        <br>
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <label class="form-label">Digite sua senha</label>
-                <div class="input-group">
-                    <input [type]="mostrarSenha ? 'text' : 'password'"
-                    formControlName="senha"
-                    placeholder="Informe sua senha" 
+<div class="login-box">
+    <h3 class="text-center text text-black font form-text-size">Faça seu Login</h3>
+    <br>
+    <div class="container text-center col-10">
+         <div *ngIf="mensagem"  class=" mensagem font form-text">
+        {{ mensagem }}
+        </div>
+    </div>
+    <br>
+    <form [formGroup]="meuLogin" (ngSubmit)="acessarUsuarios()">
+        <div class="container col-12">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <label class="form-label">Digite seu email:</label>
+                    <input type="text" 
+                    formControlName="email" 
+                    placeholder="Informe seu email" 
                     class="form-control" 
                     required (focus)="limparMensagem()"/>
-                    <div class="input-group-text">
-                        <i 
-                            class = 'fa icone-senha' (click)="alternarVisibilidadeSenha()"  
-                            [ngClass]="mostrarSenha ? 'fa fa-eye-slash' : 'fa fa-eye'">
-                        </i>
-                    </div>  
+                    <div class="text-danger font form-text">
+                        <span *ngIf="meuLogin.controls.email.errors?.['required'] && meuLogin.controls.email.touched">
+                            Campo email obrigatório.
+                        </span>
+                        <span *ngIf="meuLogin.controls.email.errors?.['email']">
+                            Email inválido.
+                        </span>
+                    </div>
                 </div>
-                <div class="text-danger font form-text">
-                    <span *ngIf="meuLogin.controls.senha.errors?.['required'] && meuLogin.controls.senha.touched">
-                        Campo senha obrigatório.
-                    </span>
-                    <span *ngIf="meuLogin.controls.senha.errors?.['minlength'] && meuLogin.controls.senha.touched">
-                        Mínimo 6 dígitos.
-                    </span>
-                    <span *ngIf="meuLogin.controls.senha.errors?.['maxlength'] && meuLogin.controls.senha.touched">
-                        Máximo 10 dígitos.
-                    </span>
+            </div>    
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <label class="form-label">Digite sua senha</label>
+                    <div class="input-group">
+                        <input [type]="mostrarSenha ? 'text' : 'password'"
+                        formControlName="senha"
+                        placeholder="Informe sua senha" 
+                        class="form-control" 
+                        required (focus)="limparMensagem()"/>
+                        <div class="input-group-text">
+                            <i 
+                                class = 'fa icone-senha' (click)="alternarVisibilidadeSenha()"  
+                                [ngClass]="mostrarSenha ? 'fa fa-eye-slash' : 'fa fa-eye'">
+                            </i>
+                        </div>  
+                    </div>
+                    <div class="text-danger font form-text">
+                        <span *ngIf="meuLogin.controls.senha.errors?.['required'] && meuLogin.controls.senha.touched">
+                            Campo senha obrigatório.
+                        </span>
+                        <span *ngIf="meuLogin.controls.senha.errors?.['minlength'] && meuLogin.controls.senha.touched">
+                            Mínimo 6 dígitos.
+                        </span>
+                        <span *ngIf="meuLogin.controls.senha.errors?.['maxlength'] && meuLogin.controls.senha.touched">
+                            Máximo 10 dígitos.
+                        </span>
+                    </div>
                 </div>
+            </div>    
+            <br>
+            <br>
+            <div class="row justify-content-center">
+                <div class="d-grid gap-2 col-7 mx-auto">
+                <button [disabled]="!meuLogin.valid" class="btn btn-primary" type="submit">
+                    Login
+                </button>
+            </div>
+            </div>
+            <br>
+            <div class="row text-center">
+                <p>Não tem login? <a href="javascript:void(0)" (click)="acessarCadastro()"
+                 class="link-underline link-underline-opacity-0">Cadastre-se  ></a></p>
             </div>
         </div>    
-        <br>
-        <br>
-        <div class="row justify-content-center">
-            <div class="d-grid gap-2 col-3 mx-auto">
-            <button [disabled]="!meuLogin.valid" class="btn btn-primary" type="submit">
-                Login
-            </button>
-        </div>
-        </div>
-        <br>
-        <div class="row text-center">
-            <p>Não tem login? <a href="javascript:void(0)" (click)="acessarCadastro()"
-             class="link-underline link-underline-opacity-0">Cadastre-se  ></a></p>
-        </div>
-    </div>    
-</form>
+    </form>
+</div>

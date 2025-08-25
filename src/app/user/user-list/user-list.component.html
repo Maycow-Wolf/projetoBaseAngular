@@ -27,8 +27,8 @@
             <tr *ngFor="let item of cadastros; let i = index">
                 <td scope="row-1">{{item.id}}</td>
                 <td scope="row-2">{{item.name}}</td>
-                <td scope="row-3">{{formatarData(item.idade)}}</td>
-                <td scope="row-4">{{calcularIdade(item.idade)}}</td>
+                <td scope="row-3">{{formatarData(item.dataNascimento)}}</td>
+                <td scope="row-4">{{calcularIdade(item.dataNascimento)}}</td>
                 <td scope="row-5">{{item.email}}</td>
                 <td scope="row-6">{{item.cargo}}</td>
                 <td scope="row-7">{{item.senha}}</td>

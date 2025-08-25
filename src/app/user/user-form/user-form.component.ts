@@ -18,7 +18,7 @@ export class UserFormComponent implements OnChanges {
     
   meuFormulario = new FormGroup({
     name: new FormControl("",[Validators.minLength(3), Validators.maxLength(15), Validators.required]),
-    idade: new FormControl("",[Validators.required]),
+    dataNascimento: new FormControl("",[Validators.required]),
     email: new FormControl("",[Validators.email, Validators.required]),
     cargo: new FormControl("",[Validators.required]),
     senha: new FormControl("",[Validators.minLength(6), Validators.maxLength(12), Validators.required])
@@ -32,7 +32,7 @@ export class UserFormComponent implements OnChanges {
     if (this.valorInicial) {
       this.meuFormulario.setValue({
         name: this.valorInicial.name || '',
-        idade: this.valorInicial.idade || null,
+        dataNascimento: this.valorInicial.dataNascimento || null,
         email: this.valorInicial.email || '',
         cargo: this.valorInicial.cargo || '',
         senha: this.valorInicial.senha || null
@@ -59,13 +59,13 @@ export class UserFormComponent implements OnChanges {
   carregarUsuario(id: number) {
     this.userService.getUserById(id).subscribe(
       (user) => {
-        if (user.idade) {
-          user.idade = this.formatarDataParaInput(user.idade);
+        if (user.dataNascimento) {
+          user.dataNascimento = this.formatarDataParaInput(user.dataNascimento);
         }
         this.usuarios = user
         this.meuFormulario.setValue({
           name: user.name,
-          idade: user.idade,
+          dataNascimento: user.dataNascimento,
           email: user.email,
           cargo: user.cargo,
           senha: user.senha
@@ -103,6 +103,7 @@ export class UserFormComponent implements OnChanges {
   }
   
   salvarUsuario(cadastro: any) {
+    
     if (this.cadastroEditadoId !== null){
       this.userService.updateUser(this.cadastroEditadoId, cadastro).subscribe(
         (usuarioAtualizado) => {  

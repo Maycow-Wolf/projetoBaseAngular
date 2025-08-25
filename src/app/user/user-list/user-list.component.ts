@@ -41,10 +41,10 @@ export class UserListComponent {
     return this.datePipe.transform(data, 'dd/MM/yyyy') || ''; //dataPipe formatar datas
   }
 
-  calcularIdade(dataNascimento: string): number {
-    if (!dataNascimento) return 0;
+  calcularIdade(dataNasc: string): number {
+    if (!dataNasc) return 0;
 
-    const nascimento = new Date(dataNascimento); // converte a string dataNascimento para formato data
+    const nascimento = new Date(dataNasc); // converte a string dataNascimento para formato data
     const hoje = new Date();
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
