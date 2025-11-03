@@ -23,7 +23,7 @@
                 <th scope="col-9">Excluir</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="align-middle">
             <tr *ngFor="let item of cadastros; let i = index">
                 <td scope="row-1">{{item.id}}</td>
                 <td scope="row-2">{{item.name}}</td>
@@ -33,10 +33,14 @@
                 <td scope="row-6">{{item.cargo}}</td>
                 <td scope="row-7">{{item.senha}}</td>
                 <td scope="row-8">
-                    <button class="btn btn-warning" (click)="editar(item.id)">Editar</button>
+                    <button class="btn btn-warning" (click)="editar(item.id)"
+                    style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;"
+                    >Editar</button>
                 </td>
                 <td scope="row-8">
-                    <button class="btn btn-danger" (click)="excluir(item.id)">Excluir</button>
+                    <button class="btn btn-danger" (click)="excluir(item.id)"
+                    style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;"
+                    >Excluir</button>
                 </td>
             </tr>
             </tbody>
