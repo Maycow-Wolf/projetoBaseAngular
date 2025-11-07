@@ -40,3 +40,10 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Pastas padrão de build do .NET
+bin/
+obj/
+
+CadastroUsuariosAPI/dating.db
+CadastroUsuariosAPI/appsettings.json
